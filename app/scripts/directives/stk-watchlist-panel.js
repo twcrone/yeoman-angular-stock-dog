@@ -7,7 +7,7 @@
  * # stkWatchlistPanel
  */
 angular.module('stockDogApp')
-  .directive('stkWatchlistPanel', function ($location, $modal, WatchListService) {
+  .directive('stkWatchlistPanel', function ($location, $modal, WatchlistService) {
     return {
       templateUrl: 'views/templates/watchlist-panel.html',
       restrict: 'E',
@@ -20,8 +20,22 @@ angular.module('stockDogApp')
           show: false
         });
 
-        $scope.watchlists = WatchListService.query();
-        
+        $scope.watchlists = WatchlistService.query();
+
+        $scope.showModal = function() {
+          addListModal.$promise.then(addListModal.show);
+        };
+
+        $scope.createList = function() {
+          WatchlistService.save($scope.watchlist);
+          addListModal.hide();
+          $scope.watchlist = {};
+        };
+
+        $scope.deleteList = function(list) {
+          WatchlistService.remove(list);
+          $location.path('/');
+        };
       }
     };
   });

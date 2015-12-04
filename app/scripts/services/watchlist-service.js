@@ -35,6 +35,14 @@ angular.module('stockDogApp')
         });
     };
 
+    this.query = function(listId) {
+      if(listId) {
+        return findById(listId);
+      } else {
+        return Model.watchlists;
+      }
+    }
+
     this.save = function(watchlist) {
       watchlist.id = Model.nextId++;
       Model.watchlists.push(watchlist);
