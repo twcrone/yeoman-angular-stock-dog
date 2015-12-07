@@ -16,7 +16,7 @@ angular.module('stockDogApp')
         JSON.parse(localStorage['StockDog.watchlists']) : [],
         nextId:
         localStorage['StockDog.nextId'] ?
-        parseIn(localStorage['StockDog.nextId']) : 0
+        parseInt(localStorage['StockDog.nextId']) : 0
       };
       return model;
     };
