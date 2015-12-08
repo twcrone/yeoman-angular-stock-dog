@@ -28,6 +28,21 @@ angular.module('stockDogApp')
       Model.nextId;
     };
 
+    var StockModel = {
+      save: function() {
+          var watchlist = findById(this.listId);
+          watchlist.recalculate();
+          saveModel();
+      }
+    };
+
+    var WatchlistMode = {
+      addStock: function(stock) {
+
+      }
+
+    };
+
     var findById = function(listId) {
       return _.find(Model.watchlists,
         function(watchlist) {
@@ -41,7 +56,7 @@ angular.module('stockDogApp')
       } else {
         return Model.watchlists;
       }
-    }
+    };
 
     this.save = function(watchlist) {
       watchlist.id = Model.nextId++;
