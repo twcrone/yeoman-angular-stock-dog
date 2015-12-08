@@ -8,8 +8,6 @@
  * Service in the stockDogApp.
  */
 angular.module('stockDogApp')
-  .service('CompanyService', function () {
-    CompanyService($resource) {
+  .service('CompanyService', function CompanyService($resource) {
       return $resource('companies.json');
-    }
   });
